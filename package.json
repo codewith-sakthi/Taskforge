@@ -1,0 +1,23 @@
+{
+  "name": "teampulse",
+  "version": "1.0.0",
+  "description": "TeamPulse - Private Team Task Management and Employee Check-In Platform",
+  "scripts": {
+    "dev:backend": "npm --prefix backend run dev",
+    "dev:frontend": "npm --prefix frontend run dev",
+    "seed": "npm --prefix backend run prisma:seed",
+    "build": "npm --prefix backend run build && npm --prefix frontend run build"
+  },
+  "keywords": [
+    "team-management",
+    "task-tracking",
+    "check-in",
+    "attendance",
+    "rbac",
+    "socketio",
+    "prisma",
+    "react"
+  ],
+  "author": "TeamPulse Engineering",
+  "license": "MIT"
+}

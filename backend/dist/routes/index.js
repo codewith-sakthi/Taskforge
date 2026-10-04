@@ -1,0 +1,24 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const auth_routes_js_1 = __importDefault(require("./auth.routes.js"));
+const member_routes_js_1 = __importDefault(require("./member.routes.js"));
+const task_routes_js_1 = __importDefault(require("./task.routes.js"));
+const checkin_routes_js_1 = __importDefault(require("./checkin.routes.js"));
+const activity_routes_js_1 = __importDefault(require("./activity.routes.js"));
+const notification_routes_js_1 = __importDefault(require("./notification.routes.js"));
+const dashboard_routes_js_1 = __importDefault(require("./dashboard.routes.js"));
+const settings_routes_js_1 = __importDefault(require("./settings.routes.js"));
+const router = (0, express_1.Router)();
+router.use('/auth', auth_routes_js_1.default);
+router.use('/members', member_routes_js_1.default);
+router.use('/tasks', task_routes_js_1.default);
+router.use('/checkins', checkin_routes_js_1.default);
+router.use('/activity', activity_routes_js_1.default);
+router.use('/notifications', notification_routes_js_1.default);
+router.use('/dashboard', dashboard_routes_js_1.default);
+router.use('/settings', settings_routes_js_1.default);
+exports.default = router;
