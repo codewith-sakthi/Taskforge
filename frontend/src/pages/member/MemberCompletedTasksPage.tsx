@@ -55,7 +55,7 @@ export const MemberCompletedTasksPage: React.FC = () => {
       setTotalPages(res.data.pagination?.totalPages || 1);
       setTotalCount(res.data.pagination?.total || 0);
     } catch (err: any) {
-      error(err.response?.data?.message || 'Failed to load completed deliverables');
+      error(err.response?.data?.message || 'Failed to load completed tasks');
     } finally {
       setIsLoading(false);
     }
@@ -87,9 +87,9 @@ export const MemberCompletedTasksPage: React.FC = () => {
     <div className="space-y-6 animate-in fade-in duration-300">
       {/* Header */}
       <div>
-        <h1 className="text-2xl font-extrabold text-slate-900 tracking-tight">Completed Deliverables & Milestones</h1>
+        <h1 className="text-2xl font-extrabold text-slate-900 tracking-tight">Completed Tasks</h1>
         <p className="text-xs sm:text-sm text-slate-500 mt-0.5">
-          A showcase of all the projects, features, and tasks you have successfully brought across the finish line.
+          A list of all assigned tasks and projects you have successfully completed.
         </p>
       </div>
 
@@ -148,11 +148,11 @@ export const MemberCompletedTasksPage: React.FC = () => {
         <TableSkeleton rows={4} cols={3} />
       ) : completedTasks.length === 0 ? (
         <EmptyState
-          title="No completed deliverables yet"
+          title="No completed tasks yet"
           description={
             searchQuery || selectedPriority
               ? 'No completed tasks match your search filter.'
-              : 'As you finish tasks and reach 100% progress, your completed deliverables will be archived here.'
+              : 'As you finish tasks and reach 100% progress, your completed tasks will be shown here.'
           }
           icon={<Award className="w-8 h-8 text-emerald-500" />}
           actionLabel="Go to My Tasks"
@@ -194,7 +194,7 @@ export const MemberCompletedTasksPage: React.FC = () => {
                 </div>
 
                 <div className="flex items-center justify-between text-slate-500">
-                  <span>Delivered On:</span>
+                  <span>Completed On:</span>
                   <span className="font-semibold text-slate-700">
                     {format(new Date(task.completedAt), 'MMM dd, yyyy')}
                   </span>
@@ -210,7 +210,7 @@ export const MemberCompletedTasksPage: React.FC = () => {
                   }}
                   icon={<Eye className="w-3.5 h-3.5" />}
                 >
-                  View Delivery Details
+                  View Task Details
                 </Button>
               </div>
             </Card>

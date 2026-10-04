@@ -238,17 +238,17 @@ export const MemberTaskDetailPage: React.FC = () => {
                   className="w-full accent-blue-600 cursor-pointer"
                 />
 
-                {/* Quick 10% step preset pills */}
-                <div className="grid grid-cols-6 gap-1 mt-2">
-                  {[0, 20, 40, 60, 80, 100].map((step) => (
+                {/* Quick step preset pills */}
+                <div className="grid grid-cols-5 gap-1.5 mt-2.5">
+                  {[0, 25, 50, 75, 100].map((step) => (
                     <button
                       key={step}
                       type="button"
                       onClick={() => setPresetProgress(step)}
-                      className={`py-1 rounded-md text-[10px] font-bold border transition-colors ${
+                      className={`py-1.5 rounded-lg text-xs font-bold border transition-colors ${
                         progressVal === step
-                          ? 'bg-blue-600 text-white border-blue-600'
-                          : 'bg-slate-50 text-slate-600 border-slate-200 hover:bg-slate-100'
+                          ? 'bg-blue-600 text-white border-blue-600 shadow-sm'
+                          : 'bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100'
                       }`}
                     >
                       {step}%
@@ -259,13 +259,13 @@ export const MemberTaskDetailPage: React.FC = () => {
 
               <div>
                 <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
-                  Status Note / Deliverable Note
+                  Progress Note / Comment
                 </label>
                 <textarea
-                  rows={4}
+                  rows={3}
                   value={commentText}
                   onChange={(e) => setCommentText(e.target.value)}
-                  placeholder="e.g. Completed homepage design and started responsive layout..."
+                  placeholder="e.g. Worked on layout and updated components..."
                   className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white text-slate-900"
                 />
               </div>

@@ -111,20 +111,21 @@ export const AdminDashboardPage: React.FC = () => {
   return (
     <div className="space-y-6 animate-in fade-in duration-300">
       {/* Top Banner & Action */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div>
-          <h1 className="text-2xl font-extrabold text-slate-900 tracking-tight">Admin Overview & Delivery Pulse</h1>
+          <h1 className="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight">Admin Overview & Task Pulse</h1>
           <p className="text-xs sm:text-sm text-slate-500 mt-0.5">
-            Real-time telemetry on completed milestones, ongoing task velocity, and team deliverables.
+            Real-time tracking on assigned tasks, team progress, and completed tasks.
           </p>
         </div>
-        <div className="flex items-center gap-2.5">
+        <div className="flex items-center gap-2">
           <Button
             variant="outline"
             size="sm"
             onClick={() => fetchDashboardData(true)}
             isLoading={isRefreshing}
             icon={<RefreshCw className={`w-3.5 h-3.5 ${isRefreshing ? 'animate-spin' : ''}`} />}
+            className="flex-1 sm:flex-none"
           >
             Refresh
           </Button>
@@ -132,6 +133,7 @@ export const AdminDashboardPage: React.FC = () => {
             size="sm"
             onClick={() => navigate('/admin/tasks')}
             icon={<Plus className="w-4 h-4" />}
+            className="flex-1 sm:flex-none"
           >
             Create Task
           </Button>
@@ -139,7 +141,7 @@ export const AdminDashboardPage: React.FC = () => {
       </div>
 
       {/* KPI Stats Grid */}
-      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
         <StatCard
           title="Completed Tasks"
           value={stats.completedTasks}
@@ -175,8 +177,8 @@ export const AdminDashboardPage: React.FC = () => {
         {/* Weekly Task Completion Velocity Area Chart */}
         <Card className="lg:col-span-2">
           <CardHeader
-            title="Task Completion Velocity (Past 7 Days)"
-            description="Number of closed deliverables per day across the organization"
+            title="Task Completion Trend (Past 7 Days)"
+            description="Number of completed tasks per day across the team"
             action={
               <button
                 onClick={() => navigate('/admin/completed-tasks')}

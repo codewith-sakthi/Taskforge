@@ -105,9 +105,9 @@ export const CompletedTasksPage: React.FC = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-extrabold text-slate-900 tracking-tight">Completed Tasks & Deliverables</h1>
+          <h1 className="text-2xl font-extrabold text-slate-900 tracking-tight">Completed Tasks</h1>
           <p className="text-xs sm:text-sm text-slate-500 mt-0.5">
-            Audit closed milestones, turnaround metrics, and deliverable notes across your team.
+            Audit completed tasks, turnaround metrics, and completion notes across your team.
           </p>
         </div>
       </div>
@@ -194,7 +194,7 @@ export const CompletedTasksPage: React.FC = () => {
           <div className="p-6">
             <EmptyState
               title="No completed tasks found"
-              description="When team members finish their tasks (100% progress), they will appear here with delivery notes."
+              description="When team members finish their tasks (100% progress), they will appear here with completion notes."
               icon={<CheckCircle2 className="w-8 h-8 text-emerald-500" />}
             />
           </div>
@@ -278,7 +278,7 @@ export const CompletedTasksPage: React.FC = () => {
             <div className="flex items-center justify-between px-6 py-4 border-t border-slate-100 text-xs text-slate-500">
               <div>
                 Showing <span className="font-bold text-slate-800">{completedTasks.length}</span> of{' '}
-                <span className="font-bold text-slate-800">{totalCount}</span> completed deliverables
+                <span className="font-bold text-slate-800">{totalCount}</span> completed tasks
               </div>
 
               <div className="flex items-center gap-2">

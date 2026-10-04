@@ -3,6 +3,7 @@ import { Outlet, Navigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { Sidebar } from '../components/common/Sidebar';
 import { Header } from '../components/common/Header';
+import { MobileBottomNav } from '../components/common/MobileBottomNav';
 
 export const MemberLayout: React.FC = () => {
   const { user, isAuthenticated, isLoading } = useAuth();
@@ -24,7 +25,7 @@ export const MemberLayout: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-slate-50 flex">
+    <div className="min-h-screen bg-slate-50 flex flex-col lg:flex-row">
       {/* Sidebar */}
       <Sidebar
         isMobileOpen={isMobileSidebarOpen}
@@ -34,10 +35,13 @@ export const MemberLayout: React.FC = () => {
       {/* Main Content Area */}
       <div className="flex-1 flex flex-col min-w-0 lg:pl-64">
         <Header onMobileMenuToggle={() => setIsMobileSidebarOpen(true)} />
-        <main className="flex-1 p-4 sm:p-6 lg:p-8 max-w-7xl w-full mx-auto">
+        <main className="flex-1 p-3.5 sm:p-6 lg:p-8 pb-24 lg:pb-8 max-w-7xl w-full mx-auto">
           <Outlet />
         </main>
       </div>
+
+      {/* Mobile Bottom Bar for quick finger navigation */}
+      <MobileBottomNav />
     </div>
   );
 };

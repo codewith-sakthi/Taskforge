@@ -171,10 +171,10 @@ export const MemberDetailPage: React.FC = () => {
           </div>
         </Card>
 
-        {/* Completed Deliverables Archive */}
+        {/* Completed Tasks Archive */}
         <Card>
           <CardHeader
-            title="Completed Deliverables Archive"
+            title="Completed Tasks Archive"
             description="Historical log of finished tasks and milestones"
           />
           <div className="space-y-3 max-h-[400px] overflow-y-auto pr-1">

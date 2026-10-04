@@ -311,7 +311,7 @@ export const TasksPage: React.FC = () => {
               rows={3}
               value={formData.description}
               onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-              placeholder="Detailed instructions, scope of work, and expected deliverables..."
+              placeholder="Detailed instructions, scope of work, and task goals..."
               className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white text-slate-900"
             />
           </div>

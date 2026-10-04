@@ -67,9 +67,9 @@ export const AnalyticsPage: React.FC = () => {
     <div className="space-y-6 animate-in fade-in duration-300">
       {/* Top Banner */}
       <div>
-        <h1 className="text-2xl font-extrabold text-slate-900 tracking-tight">Team Delivery Analytics & Throughput</h1>
+        <h1 className="text-2xl font-extrabold text-slate-900 tracking-tight">Team Task Analytics & Velocity</h1>
         <p className="text-xs sm:text-sm text-slate-500 mt-0.5">
-          Comprehensive milestone metrics, task completion velocity, and workload distribution.
+          Comprehensive task progress metrics, completion velocity, and workload distribution.
         </p>
       </div>
 

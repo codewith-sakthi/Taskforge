@@ -101,44 +101,45 @@ export const MemberDashboardPage: React.FC = () => {
   return (
     <div className="space-y-6 animate-in fade-in duration-300">
       {/* Welcome Banner */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div>
-          <h1 className="text-2xl font-extrabold text-slate-900 tracking-tight">
+          <h1 className="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight">
             Hello, <span className="text-blue-600">{user?.name}</span> 👋
           </h1>
           <p className="text-xs sm:text-sm text-slate-500 mt-0.5">
-            Your personal task execution, completion tracker, and deliverables hub.
+            Your assigned tasks, active progress, and completed tasks overview.
           </p>
         </div>
         <Button
           size="sm"
           onClick={() => navigate('/member/tasks')}
           icon={<CheckSquare className="w-4 h-4" />}
+          className="w-full sm:w-auto"
         >
           View All My Tasks
         </Button>
       </div>
 
       {/* Task Completion Hero Command Center */}
-      <Card className="bg-gradient-to-r from-slate-900 via-blue-950 to-indigo-950 text-white border-0 p-6 sm:p-8 shadow-xl relative overflow-hidden">
+      <Card className="bg-gradient-to-r from-slate-900 via-blue-950 to-indigo-950 text-white border-0 p-5 sm:p-8 shadow-xl relative overflow-hidden">
         <div className="absolute top-0 right-0 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
 
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 relative z-10">
           <div className="flex-1">
             <div className="flex items-center gap-2">
-              <span className="text-xs font-bold uppercase tracking-wider text-blue-300">Milestone Progress</span>
+              <span className="text-xs font-bold uppercase tracking-wider text-blue-300">Task Completion Rate</span>
               <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-400/30">
-                {taskStats.completionRate}% Completion Rate
+                {taskStats.completionRate}%
               </span>
             </div>
 
             <h2 className="text-xl sm:text-2xl font-bold mt-2">
-              {taskStats.completed} of {taskStats.totalTasks} Tasks Delivered
+              {taskStats.completed} of {taskStats.totalTasks} Tasks Completed
             </h2>
             <p className="text-xs sm:text-sm text-blue-200/80 mt-1 max-w-md leading-relaxed">
               {taskStats.pending + taskStats.inProgress > 0
-                ? `You have ${taskStats.inProgress} tasks underway and ${taskStats.pending} ready for kickoff.`
-                : 'All your tasks are 100% completed! Fantastic productivity.'}
+                ? `You have ${taskStats.inProgress} active tasks in progress and ${taskStats.pending} pending tasks.`
+                : 'All your assigned tasks are completed! Great job.'}
             </p>
 
             <div className="mt-4 max-w-md">
@@ -151,22 +152,22 @@ export const MemberDashboardPage: React.FC = () => {
             </div>
           </div>
 
-          <div className="flex flex-row sm:flex-col gap-3 shrink-0">
+          <div className="flex flex-col sm:flex-row gap-3 shrink-0">
             <Button
               variant="primary"
               size="md"
               onClick={() => navigate('/member/completed-tasks')}
               icon={<Award className="w-4 h-4" />}
-              className="bg-emerald-500 hover:bg-emerald-600 text-white font-bold shadow-lg shadow-emerald-500/25"
+              className="bg-emerald-500 hover:bg-emerald-600 text-white font-bold shadow-lg shadow-emerald-500/25 w-full sm:w-auto"
             >
-              Completed Deliverables ({taskStats.completed})
+              Completed Tasks ({taskStats.completed})
             </Button>
           </div>
         </div>
       </Card>
 
       {/* Task Metric Cards */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
         <StatCard
           title="Completed Tasks"
           value={taskStats.completed}
@@ -177,21 +178,21 @@ export const MemberDashboardPage: React.FC = () => {
         <StatCard
           title="In Progress"
           value={taskStats.inProgress}
-          subtitle="Currently active tasks"
+          subtitle="Currently active"
           icon={<Zap className="w-5 h-5" />}
           colorScheme="blue"
         />
         <StatCard
-          title="Pending Kickoff"
+          title="Pending"
           value={taskStats.pending}
-          subtitle="Awaiting your start"
+          subtitle="Awaiting start"
           icon={<Clock className="w-5 h-5" />}
           colorScheme="amber"
         />
         <StatCard
-          title="Overdue Risk"
+          title="Overdue"
           value={taskStats.overdue}
-          subtitle={taskStats.overdue > 0 ? 'Urgent attention required' : 'Deadlines in check'}
+          subtitle={taskStats.overdue > 0 ? 'Urgent attention' : 'On schedule'}
           icon={<AlertCircle className="w-5 h-5" />}
           colorScheme="rose"
         />
@@ -203,8 +204,8 @@ export const MemberDashboardPage: React.FC = () => {
         <div className="lg:col-span-2">
           <Card>
             <CardHeader
-              title="Active Tasks to Deliver"
-              description="Tasks requiring progress milestones and completion"
+              title="Active Assigned Tasks"
+              description="Tasks assigned to you requiring progress and updates"
               action={
                 <button
                   onClick={() => navigate('/member/tasks')}
@@ -218,19 +219,19 @@ export const MemberDashboardPage: React.FC = () => {
             <div className="space-y-3.5">
               {activeTasks.length === 0 ? (
                 <EmptyState
-                  title="No pending tasks"
-                  description="You have completed all assigned tasks! Check back when your manager delegates new tasks."
+                  title="No active tasks"
+                  description="You have completed all assigned tasks! Check back when your manager assigns new tasks."
                   icon={<CheckCircle2 className="w-8 h-8 text-emerald-500" />}
                 />
               ) : (
                 activeTasks.map((task) => (
                   <div
                     key={task.id}
-                    className="p-4 bg-slate-50/80 border border-slate-200/80 rounded-2xl hover:border-blue-300 transition-all space-y-3"
+                    className="p-3.5 sm:p-4 bg-slate-50/80 border border-slate-200/80 rounded-2xl hover:border-blue-300 transition-all space-y-3"
                   >
-                    <div className="flex items-start justify-between gap-3">
-                      <div>
-                        <div className="flex items-center gap-2 mb-1">
+                    <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3">
+                      <div className="flex-1">
+                        <div className="flex flex-wrap items-center gap-2 mb-1">
                           <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
                             {task.category}
                           </span>
@@ -255,18 +256,18 @@ export const MemberDashboardPage: React.FC = () => {
                           isLoading={completingTaskId === task.id}
                           onClick={() => handleQuickComplete(task.id, task.title)}
                           icon={<CheckCircle2 className="w-3.5 h-3.5" />}
-                          className="text-xs font-bold"
+                          className="text-xs font-bold w-full sm:w-auto"
                         >
                           Mark Complete
                         </Button>
                       </div>
                     </div>
 
-                    <div className="pt-2 border-t border-slate-100 flex items-center justify-between gap-4 text-xs">
-                      <div className="w-48">
+                    <div className="pt-2 border-t border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
+                      <div className="w-full sm:w-48">
                         <ProgressBar progress={task.progress} showLabel size="sm" />
                       </div>
-                      <div className="flex items-center gap-3">
+                      <div className="flex items-center justify-between sm:justify-end gap-3">
                         <div className="flex items-center gap-1 text-[11px] text-slate-500">
                           <Calendar className="w-3.5 h-3.5 text-slate-400" />
                           Due {new Date(task.dueDate).toLocaleDateString()}
@@ -286,12 +287,12 @@ export const MemberDashboardPage: React.FC = () => {
           </Card>
         </div>
 
-        {/* Celebratory Completed Deliverables Widget */}
+        {/* Recently Completed Tasks Widget */}
         <div>
           <Card>
             <CardHeader
-              title="Completed Milestones"
-              description="Your finished deliverables & achievements"
+              title="Recent Completed Tasks"
+              description="Your finished tasks & completion history"
               action={
                 <button
                   onClick={() => navigate('/member/completed-tasks')}
@@ -305,7 +306,7 @@ export const MemberDashboardPage: React.FC = () => {
             <div className="space-y-3 max-h-[380px] overflow-y-auto pr-1">
               {recentlyCompleted.length === 0 ? (
                 <p className="text-xs text-slate-400 py-6 text-center">
-                  No completed deliverables yet. Move tasks to 100% to celebrate milestones!
+                  No completed tasks yet. Update progress to 100% to complete tasks!
                 </p>
               ) : (
                 recentlyCompleted.map((task) => (

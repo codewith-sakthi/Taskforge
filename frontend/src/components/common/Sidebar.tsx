@@ -68,7 +68,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isMobileOpen, onMobileClose })
                 Team<span className="text-blue-600">Pulse</span>
               </span>
               <span className="block text-[10px] font-medium text-slate-400 -mt-1">
-                Task & Delivery Platform
+                Task & Team Management
               </span>
             </div>
           </div>
