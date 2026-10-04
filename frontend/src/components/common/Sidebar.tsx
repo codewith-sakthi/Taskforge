@@ -36,7 +36,6 @@ export const Sidebar: React.FC<SidebarProps> = ({ isMobileOpen, onMobileClose })
     { label: 'Dashboard', path: '/member/dashboard', icon: LayoutDashboard },
     { label: 'My Tasks', path: '/member/tasks', icon: CheckSquare },
     { label: 'Completed Tasks', path: '/member/completed-tasks', icon: CheckCircle2 },
-    { label: 'Activity', path: '/member/activity', icon: Activity },
     { label: 'Profile', path: '/member/profile', icon: User },
   ];
 

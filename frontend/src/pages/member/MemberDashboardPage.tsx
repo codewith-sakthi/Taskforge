@@ -20,8 +20,6 @@ import {
   Clock,
   ArrowRight,
   Sparkles,
-  Activity,
-
   ArrowUpRight,
   Award,
   TrendingUp,
@@ -98,7 +96,7 @@ export const MemberDashboardPage: React.FC = () => {
     );
   }
 
-  const { taskStats, activeTasks, recentlyCompleted, recentActivity } = data;
+  const { taskStats, activeTasks, recentlyCompleted } = data;
 
   return (
     <div className="space-y-6 animate-in fade-in duration-300">

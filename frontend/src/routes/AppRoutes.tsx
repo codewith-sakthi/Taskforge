@@ -21,7 +21,6 @@ import { MemberDashboardPage } from '../pages/member/MemberDashboardPage';
 import { MemberTasksPage } from '../pages/member/MemberTasksPage';
 import { MemberTaskDetailPage } from '../pages/member/MemberTaskDetailPage';
 import { MemberCompletedTasksPage } from '../pages/member/MemberCompletedTasksPage';
-import { MemberActivityPage } from '../pages/member/MemberActivityPage';
 import { MemberProfilePage } from '../pages/member/MemberProfilePage';
 
 // 404
@@ -83,7 +82,7 @@ export const AppRoutes: React.FC = () => {
         <Route path="tasks/:id" element={<MemberTaskDetailPage />} />
         <Route path="completed-tasks" element={<MemberCompletedTasksPage />} />
         <Route path="checkin" element={<Navigate to="/member/completed-tasks" replace />} />
-        <Route path="activity" element={<MemberActivityPage />} />
+        <Route path="activity" element={<Navigate to="/member/dashboard" replace />} />
         <Route path="profile" element={<MemberProfilePage />} />
       </Route>
 
